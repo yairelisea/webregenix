@@ -1,0 +1,2097 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGENIX | Clínica de Regeneración Celular</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons para la flecha -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #172446;
+            --secondary-color: #1a2d5a;
+            --accent-color: #83e0a2;
+            --accent-dark: #6bc88a;
+            --text-dark: #172446;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-gray: #e6e6e6;
+            --border-light: #e5e7eb;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background-color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* SVG Icons - todos inline */
+        .icon-svg {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            display: inline-block;
+            vertical-align: -0.125em;
+        }
+        
+        /* Navbar */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 0.8rem 0;
+        }
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            padding: 0;
+        }
+
+        .navbar-logo {
+            height: 40px;
+            width: auto;
+            max-width: 180px;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-link {
+            color: var(--text-dark) !important;
+            font-weight: 400;
+            font-size: 0.95rem;
+            margin: 0 0.8rem;
+            transition: color 0.2s ease;
+            letter-spacing: -0.2px;
+        }
+        
+        .nav-link:hover {
+            color: var(--text-light) !important;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-color: #ffffff;
+            color: var(--text-dark);
+            padding: 180px 0 120px;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+            line-height: 1.05;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            line-height: 1.4;
+            letter-spacing: -0.3px;
+        }
+        
+        .btn-custom {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 14px 40px;
+            border-radius: 980px;
+            font-weight: 500;
+            font-size: 1.05rem;
+            border: none;
+            transition: all 0.3s ease;
+            letter-spacing: -0.2px;
+        }
+        
+        .btn-custom:hover {
+            background-color: var(--accent-dark);
+            transform: scale(1.02);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1.5px solid var(--primary-color);
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 120px 0;
+            background-color: var(--bg-light);
+        }
+        
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            text-align: center;
+            letter-spacing: -1.5px;
+        }
+        
+        .section-subtitle {
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 5rem;
+            font-size: 1.4rem;
+            font-weight: 400;
+            letter-spacing: -0.3px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .service-card-modern {
+            position: relative;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+        }
+
+        .service-card-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-dark));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .service-card-modern:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-card-modern:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+            border-color: rgba(131, 224, 162, 0.3);
+        }
+
+        .service-card-inner {
+            padding: 3rem 2.5rem;
+            position: relative;
+        }
+
+        .service-number {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 4rem;
+            font-weight: 700;
+            color: rgba(0, 0, 0, 0.03);
+            line-height: 1;
+            letter-spacing: -2px;
+            transition: all 0.4s ease;
+        }
+
+        .service-card-modern:hover .service-number {
+            color: rgba(0, 113, 227, 0.08);
+            transform: scale(1.1);
+        }
+        
+        .service-icon-modern {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(131, 224, 162, 0.12), rgba(131, 224, 162, 0.05));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.8rem;
+            transition: all 0.4s ease;
+        }
+
+        .service-card-modern:hover .service-icon-modern {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-dark));
+            transform: rotateY(360deg) scale(1.05);
+        }
+        
+        .service-icon-modern svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--accent-color);
+            transition: fill 0.4s ease;
+        }
+
+        .service-card-modern:hover .service-icon-modern svg {
+            fill: white;
+        }
+        
+        .service-card-modern h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+        
+        .service-card-modern p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 1rem;
+            letter-spacing: -0.2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-arrow {
+            display: flex;
+            align-items: center;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.4s ease;
+        }
+
+        .service-card-modern:hover .service-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .service-arrow i {
+            transition: transform 0.3s ease;
+        }
+
+        .service-card-modern:hover .service-arrow i {
+            transform: translateX(5px);
+        }
+        
+        /* About Section - Philosophy */
+        .about {
+            padding: 120px 0;
+            background: linear-gradient(180deg, #ffffff 0%, var(--bg-light) 50%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -15%;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(131, 224, 162, 0.05), transparent);
+            filter: blur(100px);
+            pointer-events: none;
+        }
+
+        /* Philosophy Hero */
+        .philosophy-hero {
+            text-align: center;
+            margin-bottom: 6rem;
+            position: relative;
+        }
+
+        .philosophy-label {
+            display: inline-block;
+            color: var(--accent-color);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .philosophy-label::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+        }
+
+        .philosophy-statement {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.15;
+            letter-spacing: -2px;
+            margin-bottom: 2rem;
+        }
+
+        .highlight-text {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            font-weight: 600;
+        }
+
+        .philosophy-intro {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            max-width: 900px;
+            margin: 0 auto;
+            letter-spacing: -0.3px;
+        }
+
+        /* Core Values Grid */
+        .core-values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 5rem 0;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-dark));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .value-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .value-number {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 5rem;
+            font-weight: 800;
+            color: rgba(131, 224, 162, 0.08);
+            line-height: 1;
+            letter-spacing: -3px;
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(131, 224, 162, 0.15), rgba(131, 224, 162, 0.05));
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .value-card:hover .value-icon {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-dark));
+            transform: rotateY(360deg) scale(1.1);
+        }
+
+        .value-icon svg {
+            width: 2rem;
+            height: 2rem;
+            fill: var(--accent-color);
+            transition: fill 0.4s ease;
+        }
+
+        .value-card:hover .value-icon svg {
+            fill: white;
+        }
+
+        .value-card h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .value-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Narrative Section */
+        .narrative-section {
+            margin: 6rem 0;
+        }
+
+        .narrative-content {
+            padding-right: 3rem;
+        }
+
+        .narrative-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            letter-spacing: -1px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .narrative-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+        }
+
+        .narrative-content p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .pullquote-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .pullquote {
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            border-left: 4px solid var(--accent-color);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: rgba(131, 224, 162, 0.15);
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+        }
+
+        .quote-icon svg {
+            width: 3rem;
+            height: 3rem;
+            fill: rgba(131, 224, 162, 0.15);
+        }
+
+        .quote-text {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            color: var(--primary-color);
+            font-weight: 500;
+            font-style: italic;
+            margin: 2rem 0;
+            letter-spacing: -0.3px;
+        }
+
+        .quote-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .author-line {
+            width: 40px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+
+        .quote-author span {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Commitment Banner */
+        .commitment-banner {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 30px;
+            padding: 4rem;
+            margin: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .commitment-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(131, 224, 162, 0.2), transparent);
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .commitment-content {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .commitment-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .commitment-icon svg {
+            width: 2.5rem;
+            height: 2.5rem;
+            fill: white;
+        }
+
+        .commitment-text h4 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.5px;
+        }
+
+        .commitment-text p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .btn-commitment {
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+            border: 2px solid transparent;
+        }
+
+        .btn-commitment:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: var(--accent-color);
+            color: var(--primary-color);
+            border-color: var(--accent-color);
+        }
+
+        .btn-commitment svg {
+            width: 1rem;
+            height: 1rem;
+            fill: currentColor;
+        }
+        
+        /* Brands Section */
+        .brands-section {
+            padding: 120px 0;
+            background: linear-gradient(180deg, #ffffff 0%, var(--bg-light) 100%);
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .brand-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brand-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-dark));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .brand-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: rgba(131, 224, 162, 0.3);
+        }
+
+        .brand-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .brand-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(131, 224, 162, 0.1), rgba(131, 224, 162, 0.05));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .brand-card:hover .brand-logo {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-dark));
+            transform: scale(1.1) rotateY(360deg);
+        }
+
+        .brand-logo svg {
+            width: 2rem;
+            height: 2rem;
+            fill: var(--accent-color);
+            transition: fill 0.4s ease;
+        }
+
+        .brand-card:hover .brand-logo svg {
+            fill: white;
+        }
+
+        .brand-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.3px;
+        }
+
+        .brand-card p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .achievements-banner {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            padding: 3rem;
+            background: white;
+            border-radius: 24px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .achievement-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .achievement-item svg {
+            width: 2.5rem;
+            height: 2.5rem;
+            fill: var(--accent-color);
+            flex-shrink: 0;
+        }
+
+        .achievement-item h5 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.2rem;
+            letter-spacing: -0.3px;
+        }
+
+        .achievement-item p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* Locations Section */
+        .locations-section {
+            padding: 120px 0;
+            background-color: white;
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .location-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-dark));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .location-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+            border-color: rgba(131, 224, 162, 0.3);
+        }
+
+        .location-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .location-card-featured {
+            background: linear-gradient(135deg, rgba(131, 224, 162, 0.05), rgba(131, 224, 162, 0.02));
+            border: 2px solid var(--accent-color);
+        }
+
+        .location-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--accent-color);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-new {
+            background: #ff6b6b;
+        }
+
+        .location-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .location-icon svg {
+            width: 1.8rem;
+            height: 1.8rem;
+            fill: white;
+        }
+
+        .location-card h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .location-address {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .location-details {
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+            padding-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .detail-item svg {
+            width: 1rem;
+            height: 1rem;
+            fill: var(--accent-color);
+        }
+
+        .btn-location {
+            width: 100%;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 12px;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-location svg {
+            width: 1rem;
+            height: 1rem;
+            fill: currentColor;
+        }
+
+        .btn-location:hover {
+            background: var(--accent-dark);
+            transform: scale(1.02);
+        }
+
+        .btn-location-disabled {
+            background: #e0e0e0;
+            color: #999;
+            cursor: not-allowed;
+        }
+
+        .btn-location-disabled:hover {
+            transform: none;
+            background: #e0e0e0;
+        }
+
+        .map-preview {
+            margin-top: 4rem;
+            padding: 4rem;
+            background: linear-gradient(135deg, var(--bg-light), white);
+            border-radius: 24px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .map-placeholder {
+            text-align: center;
+        }
+
+        .map-placeholder svg {
+            width: 4rem;
+            height: 4rem;
+            fill: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .map-placeholder h4 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .map-placeholder p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 120px 0;
+            background-color: var(--bg-light);
+        }
+        
+        .contact-info {
+            background: var(--secondary-color);
+            color: white;
+            padding: 3.5rem;
+            border-radius: 18px;
+            height: 100%;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: start;
+            margin-bottom: 2.5rem;
+        }
+        
+        .contact-item svg {
+            width: 1.3rem;
+            height: 1.3rem;
+            margin-right: 1.2rem;
+            margin-top: 0.3rem;
+            fill: var(--accent-color);
+            flex-shrink: 0;
+        }
+        
+        .contact-item h5 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .contact-item p {
+            font-size: 1.1rem;
+            margin: 0;
+            letter-spacing: -0.2px;
+        }
+        
+        .form-control {
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            padding: 16px 20px;
+            font-size: 1.05rem;
+            background-color: white;
+            transition: all 0.2s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 4px rgba(131, 224, 162, 0.1);
+            outline: none;
+        }
+        
+        .form-control::placeholder {
+            color: var(--text-light);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            padding: 2.5rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        footer p {
+            font-size: 0.9rem;
+            letter-spacing: -0.1px;
+        }
+        
+        footer a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            margin: 0 0.5rem;
+        }
+        
+        footer a:hover {
+            color: var(--primary-color);
+        }
+
+        footer svg {
+            width: 1.3rem;
+            height: 1.3rem;
+            fill: currentColor;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar-logo {
+                height: 32px;
+            }
+            
+            .hero {
+                padding: 140px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+                letter-spacing: -1.5px;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 1rem;
+                display: block;
+                width: 100%;
+            }
+            
+            .btn-custom {
+                width: 100%;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .service-number {
+                font-size: 3rem;
+                top: 1.5rem;
+                right: 1.5rem;
+            }
+
+            .service-card-inner {
+                padding: 2.5rem 2rem;
+            }
+
+            .brands-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .achievements-banner {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+            }
+
+            .locations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .location-badge {
+                top: 1rem;
+                right: 1rem;
+                font-size: 0.7rem;
+            }
+
+            .map-preview {
+                padding: 2rem;
+            }
+
+            .map-placeholder svg {
+                width: 3rem;
+                height: 3rem;
+            }
+
+            .map-placeholder h4 {
+                font-size: 1.5rem;
+            }
+
+            .philosophy-statement {
+                font-size: 2.5rem;
+                letter-spacing: -1px;
+            }
+
+            .philosophy-intro {
+                font-size: 1.1rem;
+            }
+
+            .core-values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .narrative-content {
+                padding-right: 0;
+                margin-bottom: 3rem;
+            }
+
+            .narrative-title {
+                font-size: 2rem;
+            }
+
+            .narrative-content p {
+                font-size: 1rem;
+            }
+
+            .pullquote {
+                padding: 2rem;
+            }
+
+            .quote-text {
+                font-size: 1.2rem;
+            }
+
+            .commitment-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .commitment-banner {
+                padding: 3rem 2rem;
+            }
+
+            .btn-commitment {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card-inner {
+                padding: 2rem 1.5rem;
+            }
+
+            .brands-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .achievement-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .location-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .philosophy-statement {
+                font-size: 2rem;
+            }
+
+            .philosophy-intro {
+                font-size: 1rem;
+            }
+
+            .value-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .value-number {
+                font-size: 3.5rem;
+            }
+
+            .quote-text {
+                font-size: 1.1rem;
+            }
+
+            .commitment-icon {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- SVG Icons Definitions -->
+    <svg style="display: none;">
+        <defs>
+            <!-- Lightbulb -->
+            <symbol id="icon-lightbulb" viewBox="0 0 24 24">
+                <path d="M9,21C9,21.5 9.4,22 10,22H14C14.6,22 15,21.5 15,21V20H9V21M12,2A7,7 0 0,0 5,9C5,11.4 6.2,13.5 8,14.7V17A1,1 0 0,0 9,18H15A1,1 0 0,0 16,17V14.7C17.8,13.4 19,11.3 19,9A7,7 0 0,0 12,2Z"/>
+            </symbol>
+            
+            <!-- Heart -->
+            <symbol id="icon-heart" viewBox="0 0 24 24">
+                <path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z"/>
+            </symbol>
+            
+            <!-- Shield -->
+            <symbol id="icon-shield" viewBox="0 0 24 24">
+                <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"/>
+            </symbol>
+            
+            <!-- Leaf -->
+            <symbol id="icon-leaf" viewBox="0 0 24 24">
+                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+            </symbol>
+            
+            <!-- Certificate -->
+            <symbol id="icon-certificate" viewBox="0 0 24 24">
+                <path d="M13,21L15,20L17,21V14H13M17,9V7L15,8L13,7V9L11,10L13,11V13L15,12L17,13V11L19,10M20,3H4A2,2 0 0,0 2,5V15A2,2 0 0,0 4,17H11V15H4V5H20V15H18V17H20A2,2 0 0,0 22,15V5A2,2 0 0,0 20,3Z"/>
+            </symbol>
+            
+            <!-- Hospital -->
+            <symbol id="icon-hospital" viewBox="0 0 24 24">
+                <path d="M18 14H14V18H10V14H6V10H10V6H14V10H18M19 3H5C3.89 3 3 3.89 3 5V19A2 2 0 0 0 5 21H19A2 2 0 0 0 21 19V5C21 3.89 20.1 3 19 3Z"/>
+            </symbol>
+            
+            <!-- Award -->
+            <symbol id="icon-award" viewBox="0 0 24 24">
+                <path d="M12,15L9.82,19.75L11,19.08L12,20L13,19.08L14.18,19.75L12,15M12,4C14.21,4 16,5.79 16,8C16,10.21 14.21,12 12,12C9.79,12 8,10.21 8,8C8,5.79 9.79,4 12,4M12,2A6,6 0 0,0 6,8A6,6 0 0,0 12,14A6,6 0 0,0 18,8A6,6 0 0,0 12,2Z"/>
+            </symbol>
+            
+            <!-- User MD -->
+            <symbol id="icon-user-md" viewBox="0 0 24 24">
+                <path d="M14.84 16.26C17.86 16.83 20 18.29 20 20V22H4V20C4 18.29 6.14 16.83 9.16 16.26L12 21L14.84 16.26M8 8H10V10H12V8H14V6H12V4H10V6H8V8M12 2C13.1 2 14 2.9 14 4C14 5.11 13.1 6 12 6C10.9 6 10 5.11 10 4C10 2.9 10.9 2 12 2Z"/>
+            </symbol>
+            
+            <!-- Microscope -->
+            <symbol id="icon-microscope" viewBox="0 0 24 24">
+                <path d="M9.5,8H11.5V6.5H14V5H11.5V3.5H9.5V5H7V6.5H9.5V8M12,2A7,7 0 0,1 19,9A7,7 0 0,1 12,16C10.5,16 9.16,15.43 8.12,14.5L3,19.59L4.41,21L9.5,15.89C10.36,16.6 11.13,17 12,17A8,8 0 0,0 20,9A8,8 0 0,0 12,1V2M7,18A2,2 0 0,0 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20A2,2 0 0,0 7,18Z"/>
+            </symbol>
+            
+            <!-- Trophy -->
+            <symbol id="icon-trophy" viewBox="0 0 24 24">
+                <path d="M20,3H4V6H20M19,8H18V20H14V13H10V20H6V8H5A2,2 0 0,1 3,6V3A2,2 0 0,1 5,1H19A2,2 0 0,1 21,3V6A2,2 0 0,1 19,8Z"/>
+            </symbol>
+            
+            <!-- Star -->
+            <symbol id="icon-star" viewBox="0 0 24 24">
+                <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/>
+            </symbol>
+            
+            <!-- Handshake -->
+            <symbol id="icon-handshake" viewBox="0 0 24 24">
+                <path d="M11,8C11,10.76 9.43,13 7.5,13C5.57,13 4,10.76 4,8C4,5.24 5.57,3 7.5,3C9.43,3 11,5.24 11,8M7.5,1C4.46,1 2,3.58 2,7.5C2,11.42 4.46,14 7.5,14C10.54,14 13,11.42 13,7.5C13,3.58 10.54,1 7.5,1M16.5,1C13.46,1 11,3.58 11,7.5C11,11.42 13.46,14 16.5,14C19.54,14 22,11.42 22,7.5C22,3.58 19.54,1 16.5,1M16.5,3C18.43,3 20,5.24 20,8C20,10.76 18.43,13 16.5,13C14.57,13 13,10.76 13,8C13,5.24 14.57,3 16.5,3M6,15L4,17L5,18L7,16L6,15M18,15L17,16L19,18L20,17L18,15M12,15C10.89,15 10,15.89 10,17V23H14V17C14,15.89 13.11,15 12,15Z"/>
+            </symbol>
+            
+            <!-- Map Marker -->
+            <symbol id="icon-map-marker" viewBox="0 0 24 24">
+                <path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"/>
+            </symbol>
+            
+            <!-- Phone -->
+            <symbol id="icon-phone" viewBox="0 0 24 24">
+                <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+            </symbol>
+            
+            <!-- Clock -->
+            <symbol id="icon-clock" viewBox="0 0 24 24">
+                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.7L16.2,16.2Z"/>
+            </symbol>
+            
+            <!-- Car -->
+            <symbol id="icon-car" viewBox="0 0 24 24">
+                <path d="M5,11L6.5,6.5H17.5L19,11M17.5,16A1.5,1.5 0 0,1 16,14.5A1.5,1.5 0 0,1 17.5,13A1.5,1.5 0 0,1 19,14.5A1.5,1.5 0 0,1 17.5,16M6.5,16A1.5,1.5 0 0,1 5,14.5A1.5,1.5 0 0,1 6.5,13A1.5,1.5 0 0,1 8,14.5A1.5,1.5 0 0,1 6.5,16M18.92,6C18.72,5.42 18.16,5 17.5,5H6.5C5.84,5 5.28,5.42 5.08,6L3,12V20A1,1 0 0,0 4,21H5A1,1 0 0,0 6,20V19H18V20A1,1 0 0,0 19,21H20A1,1 0 0,0 21,20V12L18.92,6Z"/>
+            </symbol>
+            
+            <!-- Subway -->
+            <symbol id="icon-subway" viewBox="0 0 24 24">
+                <path d="M17.8,20C17.4,21.2 16.3,22 15,22H9C7.7,22 6.6,21.2 6.2,20H4V18H5V6C5,3.2 7.2,1 10,1H14C16.8,1 19,3.2 19,6V18H20V20H17.8M7,18H17V13H7V18M9.5,19A1.5,1.5 0 0,1 11,17.5A1.5,1.5 0 0,1 12.5,19A1.5,1.5 0 0,1 11,20.5A1.5,1.5 0 0,1 9.5,19M14.5,19A1.5,1.5 0 0,1 16,17.5A1.5,1.5 0 0,1 17.5,19A1.5,1.5 0 0,1 16,20.5A1.5,1.5 0 0,1 14.5,19M7,11H11V6H7V11M13,11H17V6H13V11Z"/>
+            </symbol>
+            
+            <!-- Calendar -->
+            <symbol id="icon-calendar" viewBox="0 0 24 24">
+                <path d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z"/>
+            </symbol>
+            
+            <!-- Info Circle -->
+            <symbol id="icon-info" viewBox="0 0 24 24">
+                <path d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+            </symbol>
+            
+            <!-- Bell -->
+            <symbol id="icon-bell" viewBox="0 0 24 24">
+                <path d="M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21"/>
+            </symbol>
+            
+            <!-- Map -->
+            <symbol id="icon-map" viewBox="0 0 24 24">
+                <path d="M15,19L9,16.89V5L15,7.11M20.5,3C20.44,3 20.39,3 20.34,3L15,5.1L9,3L3.36,4.9C3.15,4.97 3,5.15 3,5.38V20.5A0.5,0.5 0 0,0 3.5,21C3.55,21 3.61,21 3.66,20.97L9,18.9L15,21L20.64,19.1C20.85,19 21,18.85 21,18.62V3.5A0.5,0.5 0 0,0 20.5,3Z"/>
+            </symbol>
+            
+            <!-- Envelope -->
+            <symbol id="icon-envelope" viewBox="0 0 24 24">
+                <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+            </symbol>
+            
+            <!-- Quote -->
+            <symbol id="icon-quote" viewBox="0 0 24 24">
+                <path d="M10,7L8,11H11V17H5V11L7,7H10M18,7L16,11H19V17H13V11L15,7H18Z"/>
+            </symbol>
+            
+            <!-- Hand Heart -->
+            <symbol id="icon-hand-heart" viewBox="0 0 24 24">
+                <path d="M20.16,5A6.29,6.29 0 0,0 12,4.36A6.27,6.27 0 0,0 3.84,5A6.81,6.81 0 0,0 3,8.5C3,12 5.05,14.1 7,15.5C9,17 10,17.5 10,18.5V22H14V18.5C14,17.5 15,17 17,15.5C18.95,14.1 21,12 21,8.5A6.81,6.81 0 0,0 20.16,5M16.5,16C15.17,17 13.5,17.5 12,18C10.5,17.5 8.83,17 7.5,16C5.5,14.65 4,12.72 4,8.5A5.5,5.5 0 0,1 12,3A5.5,5.5 0 0,1 20,8.5C20,12.72 18.5,14.65 16.5,16Z"/>
+            </symbol>
+            
+            <!-- Arrow Right -->
+            <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+                <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"/>
+            </symbol>
+            
+            <!-- Directions -->
+            <symbol id="icon-directions" viewBox="0 0 24 24">
+                <path d="M14,14.5V12H10V15H8V11A1,1 0 0,1 9,10H14V7.5L17.5,11M21.71,11.29L12.71,2.29A1,1 0 0,0 12,2A1,1 0 0,0 11.29,2.29L2.29,11.29A1,1 0 0,0 2,12A1,1 0 0,0 2.29,12.71L11.29,21.71A1,1 0 0,0 12,22A1,1 0 0,0 12.71,21.71L21.71,12.71A1,1 0 0,0 22,12A1,1 0 0,0 21.71,11.29Z"/>
+            </symbol>
+            
+            <!-- Facebook -->
+            <symbol id="icon-facebook" viewBox="0 0 24 24">
+                <path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/>
+            </symbol>
+            
+            <!-- Instagram -->
+            <symbol id="icon-instagram" viewBox="0 0 24 24">
+                <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"/>
+            </symbol>
+            
+            <!-- LinkedIn -->
+            <symbol id="icon-linkedin" viewBox="0 0 24 24">
+                <path d="M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H19M18.5,18.5V13.2A3.26,3.26 0 0,0 15.24,9.94C14.39,9.94 13.4,10.46 12.92,11.24V10.13H10.13V18.5H12.92V13.57C12.92,12.8 13.54,12.17 14.31,12.17A1.4,1.4 0 0,1 15.71,13.57V18.5H18.5M6.88,8.56A1.68,1.68 0 0,0 8.56,6.88C8.56,5.95 7.81,5.19 6.88,5.19A1.69,1.69 0 0,0 5.19,6.88C5.19,7.81 5.95,8.56 6.88,8.56M8.27,18.5V10.13H5.5V18.5H8.27Z"/>
+            </symbol>
+            
+            <!-- Twitter/X -->
+            <symbol id="icon-twitter" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <!-- Coloca tu archivo logo-regen.png en la misma carpeta que este HTML -->
+                <img src="logo-regen.png" alt="REGEN - Clínica de Regeneración Celular" class="navbar-logo">
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicios">Tratamientos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nosotros">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sucursales">Sucursales</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto text-center">
+                    <h1>El futuro de la<br>medicina regenerativa.</h1>
+                    <p>Tratamientos innovadores que transforman tu salud desde el nivel celular.</p>
+                    <div>
+                        <button class="btn btn-custom">Agenda tu consulta</button>
+                        <button class="btn btn-custom btn-outline">Más información</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="services">
+        <div class="container">
+            <div class="services-header text-center mb-5">
+                <h2 class="section-title">Tratamientos avanzados</h2>
+                <p class="section-subtitle">Tecnología de vanguardia en medicina regenerativa</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card-modern" data-service="1">
+                    <div class="service-card-inner">
+                        <div class="service-number">01</div>
+                        <div class="service-icon-modern">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                                <path d="M12 2C11.5 2 11 2.19 10.59 2.59L2.59 10.59C1.8 11.37 1.8 12.63 2.59 13.41L10.59 21.41C11.37 22.2 12.63 22.2 13.41 21.41L21.41 13.41C22.2 12.63 22.2 11.37 21.41 10.59L13.41 2.59C13 2.19 12.5 2 12 2M12 4L20 12L12 20L4 12L12 4M11 6V11H6V13H11V18H13V13H18V11H13V6H11Z"/>
+                            </svg>
+                        </div>
+                        <h3>Hipertension</h3>
+                        <p>Regeneración de tejidos mediante células madre especializadas con protocolos certificados.</p>
+                        <div class="service-arrow">
+                            <i class="bi bi-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card-modern" data-service="2">
+                    <div class="service-card-inner">
+                        <div class="service-number">02</div>
+                        <div class="service-icon-modern">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12C20,14.4 19,16.5 17.3,18C15.9,16.7 14,16 12,16C10,16 8.2,16.7 6.7,18C5,16.5 4,14.4 4,12A8,8 0 0,1 12,4M14,5.89C13.62,5.9 13.26,6.15 13.1,6.54L11.81,9.77L11.71,10C11,10.13 10.41,10.6 10.14,11.26C9.73,12.29 10.23,13.45 11.26,13.86C12.29,14.27 13.45,13.77 13.86,12.74C14.12,12.08 14,11.32 13.57,10.76L13.67,10.5L14.96,7.29L14.97,7.26C15.17,6.75 14.92,6.17 14.41,5.96C14.28,5.91 14.15,5.89 14,5.89M10,6A1,1 0 0,0 9,7A1,1 0 0,0 10,8A1,1 0 0,0 11,7A1,1 0 0,0 10,6M7,9A1,1 0 0,0 6,10A1,1 0 0,0 7,11A1,1 0 0,0 8,10A1,1 0 0,0 7,9M17,9A1,1 0 0,0 16,10A1,1 0 0,0 17,11A1,1 0 0,0 18,10A1,1 0 0,0 17,9Z"/>
+                            </svg>
+                        </div>
+                        <h3>Diabetes Melitus</h3>
+                        <p>Estimulación de la capacidad natural del cuerpo para sanarse y regenerarse.</p>
+                        <div class="service-arrow">
+                            <i class="bi bi-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card-modern" data-service="3">
+                    <div class="service-card-inner">
+                        <div class="service-number">03</div>
+                        <div class="service-icon-modern">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                                <path d="M12,11A1,1 0 0,1 13,12A1,1 0 0,1 12,13A1,1 0 0,1 11,12A1,1 0 0,1 12,11M4.22,4.22C5.65,2.79 8.75,3.43 12,5.56C15.25,3.43 18.35,2.79 19.78,4.22C21.21,5.65 20.57,8.75 18.44,12C20.57,15.25 21.21,18.35 19.78,19.78C18.35,21.21 15.25,20.57 12,18.44C8.75,20.57 5.65,21.21 4.22,19.78C2.79,18.35 3.43,15.25 5.56,12C3.43,8.75 2.79,5.65 4.22,4.22M15.54,8.46C16.15,9.08 16.71,9.71 17.23,10.34C18.61,8.21 19.11,6.38 18.36,5.64C17.62,4.89 15.79,5.39 13.66,6.77C14.29,7.29 14.92,7.85 15.54,8.46M8.46,15.54C7.85,14.92 7.29,14.29 6.77,13.66C5.39,15.79 4.89,17.62 5.64,18.36C6.38,19.11 8.21,18.61 10.34,17.23C9.71,16.71 9.08,16.15 8.46,15.54M5.64,5.64C4.89,6.38 5.39,8.21 6.77,10.34C7.29,9.71 7.85,9.08 8.46,8.46C9.08,7.85 9.71,7.29 10.34,6.77C8.21,5.39 6.38,4.89 5.64,5.64M9.88,14.12C10.58,14.82 11.3,15.46 12,16.03C12.7,15.46 13.42,14.82 14.12,14.12C14.82,13.42 15.46,12.7 16.03,12C15.46,11.3 14.82,10.58 14.12,9.88C13.42,9.18 12.7,8.54 12,7.97C11.3,8.54 10.58,9.18 9.88,9.88C9.18,10.58 8.54,11.3 7.97,12C8.54,12.7 9.18,13.42 9.88,14.12M18.36,18.36C19.11,17.62 18.61,15.79 17.23,13.66C16.71,14.29 16.15,14.92 15.54,15.54C14.92,16.15 14.29,16.71 13.66,17.23C15.79,18.61 17.62,19.11 18.36,18.36Z"/>
+                            </svg>
+                        </div>
+                        <h3>Insuficiencia Renal</h3>
+                        <p>Protocolos personalizados para retrasar el envejecimiento a nivel celular.</p>
+                        <div class="service-arrow">
+                            <i class="bi bi-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card-modern" data-service="4">
+                    <div class="service-card-inner">
+                        <div class="service-number">04</div>
+                        <div class="service-icon-modern">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                                <path d="M13.5,5.5C14.59,5.5 15.5,4.58 15.5,3.5C15.5,2.38 14.59,1.5 13.5,1.5C12.39,1.5 11.5,2.38 11.5,3.5C11.5,4.58 12.39,5.5 13.5,5.5M9.89,19.38L10.89,15L13,17V23H15V15.5L12.89,13.5L13.5,10.5C14.79,12 16.79,13 19,13V11C17.09,11 15.5,10 14.69,8.58L13.69,7C13.29,6.38 12.69,6 12,6C11.69,6 11.5,6.08 11.19,6.08L6,8.28V13H8V9.58L9.79,8.88L8.19,17L3.29,16L2.89,18L9.89,19.38Z"/>
+                            </svg>
+                        </div>
+                        <h3>Disfuncion Erectil</h3>
+                        <p>Aceleración de recuperación de lesiones con tecnología de última generación.</p>
+                        <div class="service-arrow">
+                            <i class="bi bi-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card-modern" data-service="5">
+                    <div class="service-card-inner">
+                        <div class="service-number">05</div>
+                        <div class="service-icon-modern">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                                <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+                            </svg>
+                        </div>
+                        <h3>Alopesia</h3>
+                        <p>Plasma rico en plaquetas para estimular la regeneración natural y acelerada.</p>
+                        <div class="service-arrow">
+                            <i class="bi bi-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card-modern" data-service="6">
+                    <div class="service-card-inner">
+                        <div class="service-number">06</div>
+                        <div class="service-icon-modern">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                                <path d="M12,3L2,8L12,13L22,8M12,21L2,16L3.84,15.07L12,19.47L20.16,15.07L22,16"/>
+                            </svg>
+                        </div>
+                        <h3>Oncologia</h3>
+                        <p>Evaluación integral y plan de tratamiento completamente personalizado.</p>
+                        <div class="service-arrow">
+                            <i class="bi bi-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="nosotros" class="about">
+        <div class="container">
+            <!-- Philosophy Hero Statement -->
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="philosophy-hero">
+                        <div class="philosophy-label">Nuestra Filosofía</div>
+                        <h2 class="philosophy-statement">
+                            Creemos en el poder de la <span class="highlight-text">ciencia</span> para transformar vidas.
+                        </h2>
+                        <p class="philosophy-intro">
+                            Cada célula cuenta una historia. Cada tratamiento es una promesa. 
+                            Combinamos investigación de vanguardia con un compromiso inquebrantable 
+                            hacia el bienestar de nuestros pacientes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Values Grid -->
+            <div class="core-values-grid">
+                <div class="value-card">
+                    <div class="value-number">01</div>
+                    <div class="value-icon">
+                        <svg><use href="#icon-lightbulb"/></svg>
+                    </div>
+                    <h3>Innovación</h3>
+                    <p>Pioneros en medicina regenerativa, constantemente explorando nuevas fronteras científicas.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-number">02</div>
+                    <div class="value-icon">
+                        <svg><use href="#icon-heart"/></svg>
+                    </div>
+                    <h3>Empatía</h3>
+                    <p>Tratamos a cada paciente como familia, con compasión y respeto en cada interacción.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-number">03</div>
+                    <div class="value-icon">
+                        <svg><use href="#icon-shield"/></svg>
+                    </div>
+                    <h3>Excelencia</h3>
+                    <p>Estándares internacionales de calidad en cada procedimiento, sin excepciones.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-number">04</div>
+                    <div class="value-icon">
+                        <svg><use href="#icon-leaf"/></svg>
+                    </div>
+                    <h3>Sostenibilidad</h3>
+                    <p>Compromiso con prácticas éticas y responsables para las generaciones futuras.</p>
+                </div>
+            </div>
+
+            <!-- Narrative Section -->
+            <div class="narrative-section">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="narrative-content">
+                            <h3 class="narrative-title">Nuestra misión</h3>
+                            <p>
+                                Desde nuestros inicios hace más de 15 años, hemos estado a la vanguardia 
+                                de la medicina regenerativa en América Latina. Creemos firmemente que la 
+                                tecnología y la ciencia deben estar al servicio de la humanidad.
+                            </p>
+                            <p>
+                                Cada día trabajamos para democratizar el acceso a tratamientos de última 
+                                generación, manteniendo siempre los más altos estándares de calidad y seguridad. 
+                                No solo tratamos condiciones médicas; transformamos vidas.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="pullquote-container">
+                            <div class="pullquote">
+                                <div class="quote-icon">
+                                    <svg><use href="#icon-quote"/></svg>
+                                </div>
+                                <p class="quote-text">
+                                    La regeneración celular no es el futuro, 
+                                    es el presente que estamos construyendo 
+                                    contigo, célula por célula.
+                                </p>
+                                <div class="quote-author">
+                                    <div class="author-line"></div>
+                                    <span>Dr. Innovación, Director Médico</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Commitment Banner -->
+            <div class="commitment-banner">
+                <div class="commitment-content">
+                    <div class="commitment-icon">
+                        <svg><use href="#icon-hand-heart"/></svg>
+                    </div>
+                    <div class="commitment-text">
+                        <h4>Nuestro compromiso contigo</h4>
+                        <p>
+                            Transparencia total en cada proceso, acompañamiento personalizado en tu 
+                            tratamiento, y resultados respaldados por ciencia. Tu salud es nuestra prioridad.
+                        </p>
+                    </div>
+                    <div class="commitment-cta">
+                        <a href="#contacto" class="btn-commitment">
+                            Conoce más <svg><use href="#icon-arrow-right"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands/Partners Section -->
+    <section id="marcas" class="brands-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto text-center">
+                    <h2 class="section-title">Respaldados por los mejores</h2>
+                    <p class="section-subtitle">Certificaciones y alianzas estratégicas que garantizan la calidad de nuestros tratamientos</p>
+                </div>
+            </div>
+
+            <div class="brands-grid">
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <svg><use href="#icon-certificate"/></svg>
+                    </div>
+                    <h4>FDA Certified</h4>
+                    <p>Certificación internacional</p>
+                </div>
+
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <svg><use href="#icon-hospital"/></svg>
+                    </div>
+                    <h4>COFEPRIS</h4>
+                    <p>Comisión Federal</p>
+                </div>
+
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <svg><use href="#icon-award"/></svg>
+                    </div>
+                    <h4>ISO 9001</h4>
+                    <p>Gestión de calidad</p>
+                </div>
+
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <svg><use href="#icon-user-md"/></svg>
+                    </div>
+                    <h4>COLEGIO MÉDICO</h4>
+                    <p>Asociación profesional</p>
+                </div>
+
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <svg><use href="#icon-shield"/></svg>
+                    </div>
+                    <h4>STEM CELL</h4>
+                    <p>Instituto internacional</p>
+                </div>
+
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <svg><use href="#icon-microscope"/></svg>
+                    </div>
+                    <h4>LAB CERTIFIED</h4>
+                    <p>Laboratorio certificado</p>
+                </div>
+            </div>
+
+            <div class="achievements-banner">
+                <div class="achievement-item">
+                    <svg><use href="#icon-trophy"/></svg>
+                    <div>
+                        <h5>Premio Nacional</h5>
+                        <p>Innovación Médica 2024</p>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <svg><use href="#icon-star"/></svg>
+                    <div>
+                        <h5>Top 10</h5>
+                        <p>Clínicas de América Latina</p>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <svg><use href="#icon-handshake"/></svg>
+                    <div>
+                        <h5>Alianza Global</h5>
+                        <p>Red de Investigación Celular</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section id="sucursales" class="locations-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto text-center">
+                    <h2 class="section-title">Nuestras sucursales</h2>
+                    <p class="section-subtitle">Presencia en las principales ciudades de México</p>
+                </div>
+            </div>
+
+            <div class="locations-grid">
+                <!-- Monterrey -->
+                <div class="location-card location-card-featured">
+                    <div class="location-badge">Principal</div>
+                    <div class="location-icon">
+                        <svg><use href="#icon-map-marker"/></svg>
+                    </div>
+                    <h3>Monterrey</h3>
+                    <p class="location-address">Av. Constitución 2000<br>Colonia Centro, 64000</p>
+                    <div class="location-details">
+                        <div class="detail-item">
+                            <svg><use href="#icon-phone"/></svg>
+                            <span>+52 81 1234 5678</span>
+                        </div>
+                        <div class="detail-item">
+                            <svg><use href="#icon-clock"/></svg>
+                            <span>Lun - Sáb: 9:00 - 19:00</span>
+                        </div>
+                        <div class="detail-item">
+                            <svg><use href="#icon-car"/></svg>
+                            <span>Estacionamiento disponible</span>
+                        </div>
+                    </div>
+                    <button class="btn-location">
+                        <svg><use href="#icon-directions"/></svg> Cómo llegar
+                    </button>
+                </div>
+
+                <!-- Ciudad de México -->
+                <div class="location-card">
+                    <div class="location-icon">
+                        <svg><use href="#icon-map-marker"/></svg>
+                    </div>
+                    <h3>Ciudad de México</h3>
+                    <p class="location-address">Paseo de la Reforma 250<br>Polanco, 11560</p>
+                    <div class="location-details">
+                        <div class="detail-item">
+                            <svg><use href="#icon-phone"/></svg>
+                            <span>+52 55 9876 5432</span>
+                        </div>
+                        <div class="detail-item">
+                            <svg><use href="#icon-clock"/></svg>
+                            <span>Lun - Vie: 9:00 - 18:00</span>
+                        </div>
+                        <div class="detail-item">
+                            <svg><use href="#icon-subway"/></svg>
+                            <span>Metro Polanco</span>
+                        </div>
+                    </div>
+                    <button class="btn-location">
+                        <svg><use href="#icon-directions"/></svg> Cómo llegar
+                    </button>
+                </div>
+
+                <!-- Guadalajara -->
+                <div class="location-card">
+                    <div class="location-icon">
+                        <svg><use href="#icon-map-marker"/></svg>
+                    </div>
+                    <h3>Guadalajara</h3>
+                    <p class="location-address">Av. Chapultepec 480<br>Americana, 44160</p>
+                    <div class="location-details">
+                        <div class="detail-item">
+                            <svg><use href="#icon-phone"/></svg>
+                            <span>+52 33 1234 5678</span>
+                        </div>
+                        <div class="detail-item">
+                            <svg><use href="#icon-clock"/></svg>
+                            <span>Lun - Vie: 9:00 - 18:00</span>
+                        </div>
+                        <div class="detail-item">
+                            <svg><use href="#icon-car"/></svg>
+                            <span>Valet parking</span>
+                        </div>
+                    </div>
+                    <button class="btn-location">
+                        <svg><use href="#icon-directions"/></svg> Cómo llegar
+                    </button>
+                </div>
+
+                <!-- Cancún -->
+                <div class="location-card">
+                    <div class="location-badge badge-new">Próximamente</div>
+                    <div class="location-icon">
+                        <svg><use href="#icon-map-marker"/></svg>
+                    </div>
+                    <h3>Cancún</h3>
+                    <p class="location-address">Blvd. Kukulcán Km 9<br>Zona Hotelera, 77500</p>
+                    <div class="location-details">
+                        <div class="detail-item">
+                            <svg><use href="#icon-calendar"/></svg>
+                            <span>Apertura: Q1 2026</span>
+                        </div>
+                        <div class="detail-item">
+                            <svg><use href="#icon-info"/></svg>
+                            <span>En construcción</span>
+                        </div>
+                        <div class="detail-item">
+                            <svg><use href="#icon-star"/></svg>
+                            <span>Instalaciones premium</span>
+                        </div>
+                    </div>
+                    <button class="btn-location btn-location-disabled" disabled>
+                        <svg><use href="#icon-bell"/></svg> Notificarme
+                    </button>
+                </div>
+            </div>
+
+            <!-- Map Preview -->
+            <div class="map-preview">
+                <div class="map-placeholder">
+                    <svg><use href="#icon-map"/></svg>
+                    <h4>Cobertura Nacional</h4>
+                    <p>Presencia en 3 estados con planes de expansión a 10 ciudades más</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <h2 class="section-title">¿Listo para comenzar?</h2>
+            <p class="section-subtitle">Contáctanos y descubre cómo podemos ayudarte</p>
+            
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="contact-info">
+                        <h3 class="mb-4">Información</h3>
+                        
+                        <div class="contact-item">
+                            <svg><use href="#icon-map-marker"/></svg>
+                            <div>
+                                <h5>Ubicación</h5>
+                                <p>Av. Principal 123<br>Monterrey, NL</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <svg><use href="#icon-phone"/></svg>
+                            <div>
+                                <h5>Teléfono</h5>
+                                <p>+52 81 1234 5678</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <svg><use href="#icon-envelope"/></svg>
+                            <div>
+                                <h5>Email</h5>
+                                <p>info@regen.mx</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <svg><use href="#icon-clock"/></svg>
+                            <div>
+                                <h5>Horario</h5>
+                                <p>Lun - Vie: 9:00 - 19:00<br>Sáb: 9:00 - 14:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-8">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Nombre" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="tel" class="form-control" placeholder="Teléfono" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Asunto">
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" rows="6" placeholder="Mensaje" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-custom">Enviar mensaje</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="mb-2">&copy; 2025 REGEN. Todos los derechos reservados.</p>
+            <div class="mt-3">
+                <a href="#" aria-label="Facebook"><svg><use href="#icon-facebook"/></svg></a>
+                <a href="#" aria-label="Instagram"><svg><use href="#icon-instagram"/></svg></a>
+                <a href="#" aria-label="LinkedIn"><svg><use href="#icon-linkedin"/></svg></a>
+                <a href="#" aria-label="Twitter"><svg><use href="#icon-twitter"/></svg></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                    const targetPosition = target.offsetTop - navbarHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 50) {
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Animate service cards
+        document.querySelectorAll('.service-card-modern').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+
+        // Animate value cards
+        document.querySelectorAll('.value-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `opacity 0.7s ease ${index * 0.15}s, transform 0.7s ease ${index * 0.15}s`;
+            observer.observe(card);
+        });
+
+        // Animate brand cards
+        document.querySelectorAll('.brand-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `opacity 0.6s ease ${index * 0.08}s, transform 0.6s ease ${index * 0.08}s`;
+            observer.observe(card);
+        });
+
+        // Animate location cards
+        document.querySelectorAll('.location-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `opacity 0.7s ease ${index * 0.15}s, transform 0.7s ease ${index * 0.15}s`;
+            observer.observe(card);
+        });
+
+        console.log('✓ Todos los iconos son SVG inline - sin dependencias externas');
+    </script>
+</body>
+</html>
