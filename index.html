@@ -655,6 +655,32 @@
             height: 1rem;
             fill: currentColor;
         }
+
+        /* Testimonial Video Section */
+        .testimonial-video-section {
+            padding: 120px 0;
+            background-color: #ffffff;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 20px; /* Rounded corners */
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
         
         /* Brands Section */
         .brands-section {
@@ -1456,6 +1482,9 @@
                         <a class="nav-link" href="#nosotros">Nosotros</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#testimonios">Testimonios</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#sucursales">Sucursales</a>
                     </li>
                     <li class="nav-item">
@@ -1702,6 +1731,21 @@
                         <a href="#contacto" class="btn-commitment">
                             Conoce más <svg><use href="#icon-arrow-right"/></svg>
                         </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Video Section -->
+    <section id="testimonios" class="testimonial-video-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto text-center">
+                    <h2 class="section-title">Lo que dicen nuestros pacientes</h2>
+                    <p class="section-subtitle">Historias reales de transformación y bienestar.</p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/Yp2zS0ED2yQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
