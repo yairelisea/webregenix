@@ -198,23 +198,6 @@ body {
     position: relative;
 }
 
-.service-number {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    font-size: 4rem;
-    font-weight: 700;
-    color: rgba(0, 0, 0, 0.03);
-    line-height: 1;
-    letter-spacing: -2px;
-    transition: all 0.4s ease;
-}
-
-.service-card-modern:hover .service-number {
-    color: rgba(0, 113, 227, 0.08);
-    transform: scale(1.1);
-}
-
 .service-icon-modern {
     width: 70px;
     height: 70px;
@@ -232,15 +215,9 @@ body {
     transform: rotateY(360deg) scale(1.05);
 }
 
-.service-icon-modern svg {
+.service-icon-modern img {
     width: 32px;
     height: 32px;
-    fill: var(--accent-color);
-    transition: fill 0.4s ease;
-}
-
-.service-card-modern:hover .service-icon-modern svg {
-    fill: white;
 }
 
 .service-card-modern h3 {
@@ -401,17 +378,6 @@ body {
     transform: scaleX(1);
 }
 
-.value-number {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    font-size: 5rem;
-    font-weight: 800;
-    color: rgba(131, 224, 162, 0.08);
-    line-height: 1;
-    letter-spacing: -3px;
-}
-
 .value-icon {
     width: 70px;
     height: 70px;
@@ -429,15 +395,9 @@ body {
     transform: rotateY(360deg) scale(1.1);
 }
 
-.value-icon svg {
+.value-icon img {
     width: 2rem;
     height: 2rem;
-    fill: var(--accent-color);
-    transition: fill 0.4s ease;
-}
-
-.value-card:hover .value-icon svg {
-    fill: white;
 }
 
 .value-card h3 {
@@ -732,15 +692,9 @@ body {
     transform: scale(1.1) rotateY(360deg);
 }
 
-.brand-logo svg {
+.brand-logo img {
     width: 2rem;
     height: 2rem;
-    fill: var(--accent-color);
-    transition: fill 0.4s ease;
-}
-
-.brand-card:hover .brand-logo svg {
-    fill: white;
 }
 
 .brand-card h4 {
