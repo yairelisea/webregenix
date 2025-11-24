@@ -765,11 +765,11 @@
 
         whatsappBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            whatsappModal.style.display = 'block';
+            whatsappModal.classList.add('visible');
         });
 
         whatsappCloseBtn.addEventListener('click', function() {
-            whatsappModal.style.display = 'none';
+            whatsappModal.classList.remove('visible');
         });
 
         whatsappForm.addEventListener('submit', function(e) {
@@ -778,13 +778,30 @@
             const phone = document.getElementById('whatsapp-phone').value;
             const message = `Hola, mi nombre es ${name} y mi número de teléfono es ${phone}. Me gustaría obtener más información.`;
             const whatsappUrl = `https://wa.me/525539508214?text=${encodeURIComponent(message)}`;
+            
+            // TODO: Replace with your Google Apps Script Web App URL
+            const googleSheetUrl = 'YOUR_GOOGLE_SHEET_WEB_APP_URL';
+
+            // Send data to Google Sheets
+            if (googleSheetUrl !== 'YOUR_GOOGLE_SHEET_WEB_APP_URL') {
+                fetch(googleSheetUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    cache: 'no-cache',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, phone })
+                });
+            }
+
             window.open(whatsappUrl, '_blank');
-            whatsappModal.style.display = 'none';
+            whatsappModal.classList.remove('visible');
         });
 
         window.addEventListener('click', function(e) {
             if (e.target == whatsappModal) {
-                whatsappModal.style.display = 'none';
+                whatsappModal.classList.remove('visible');
             }
         });
     </script>
