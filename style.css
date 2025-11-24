@@ -1008,3 +1008,172 @@ footer a:hover {
     width: 100%;
     margin-top: 10px;
 }
+/* ===== FIX PARA ICONOS SVG - COLORES Y TAMAÑOS ===== */
+
+/* Navbar - Logo debe ser pequeño */
+.navbar-logo {
+    height: 40px !important;
+    width: auto !important;
+    max-height: 40px !important;
+}
+
+/* Quote Icon - debe ser gris claro y grande */
+.quote-icon {
+    width: 3rem !important;
+    height: 3rem !important;
+    color: rgba(131, 224, 162, 0.15) !important;
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+}
+
+.quote-icon svg {
+    width: 3rem !important;
+    height: 3rem !important;
+    fill: rgba(131, 224, 162, 0.15) !important;
+}
+
+/* Commitment Icon - debe ser blanco */
+.commitment-icon {
+    width: 80px !important;
+    height: 80px !important;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.commitment-icon svg {
+    width: 50px !important;
+    height: 50px !important;
+    fill: white !important;
+    color: white !important;
+}
+
+/* Botón de Commitment - flecha blanca pequeña */
+.btn-commitment svg {
+    width: 1rem !important;
+    height: 1rem !important;
+    fill: var(--primary-color) !important;
+}
+
+.btn-commitment:hover svg {
+    fill: var(--primary-color) !important;
+}
+
+/* Location Icons - blanco sobre fondo verde */
+.location-icon {
+    width: 70px !important;
+    height: 70px !important;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.location-icon svg {
+    width: 35px !important;
+    height: 35px !important;
+    fill: white !important;
+    color: white !important;
+}
+
+/* Detail Items - iconos pequeños verdes */
+.detail-item svg {
+    width: 18px !important;
+    height: 18px !important;
+    fill: var(--accent-color) !important;
+    color: var(--accent-color) !important;
+    flex-shrink: 0 !important;
+}
+
+/* Botones de Location - iconos pequeños */
+.btn-location svg {
+    width: 1.1rem !important;
+    height: 1.1rem !important;
+    fill: white !important;
+}
+
+/* Map Placeholder - icono grande verde */
+.map-placeholder svg {
+    width: 4rem !important;
+    height: 4rem !important;
+    fill: var(--accent-color) !important;
+    color: var(--accent-color) !important;
+    margin-bottom: 1.5rem;
+}
+
+/* Contact Info Icons - pequeños y verdes */
+.contact-item svg {
+    width: 1.2rem !important;
+    height: 1.2rem !important;
+    fill: var(--accent-color) !important;
+    color: var(--accent-color) !important;
+    flex-shrink: 0 !important;
+    margin-right: 1.2rem !important;
+    margin-top: 0.3rem !important;
+}
+
+/* Footer Icons - pequeños y grises */
+footer svg {
+    width: 1.2rem !important;
+    height: 1.2rem !important;
+    fill: var(--text-light) !important;
+    transition: fill 0.2s ease;
+}
+
+footer a:hover svg {
+    fill: var(--primary-color) !important;
+}
+
+/* WhatsApp Button - icono del tamaño correcto */
+.whatsapp-float i {
+    font-size: 28px !important;
+}
+
+/* Service Arrow - pequeño y verde */
+.service-arrow i,
+.service-arrow svg {
+    width: 1.2rem !important;
+    height: 1.2rem !important;
+    color: var(--accent-color) !important;
+}
+
+/* Value Icons - tamaño correcto */
+.value-icon svg,
+.value-icon img {
+    width: 40px !important;
+    height: 40px !important;
+}
+
+/* Brand Logos - tamaño correcto */
+.brand-logo svg,
+.brand-logo img {
+    width: 45px !important;
+    height: 45px !important;
+}
+
+/* Service Icons - tamaño correcto */
+.service-icon-modern img {
+    width: 38px !important;
+    height: 38px !important;
+}
+
+/* Override para todos los SVG que puedan estar en negro */
+svg:not(.whatsapp-float svg) {
+    fill: currentColor;
+}
+
+/* Asegurar que el navbar no tenga iconos grandes */
+.navbar svg {
+    width: 1rem !important;
+    height: 1rem !important;
+}
+
+/* Fix para imágenes que no son SVG */
+.navbar-brand img {
+    height: 40px !important;
+    width: auto !important;
+}
