@@ -715,6 +715,20 @@
         <i class="bi bi-whatsapp"></i>
     </a>
 
+    <!-- WhatsApp Modal -->
+    <div id="whatsapp-modal" class="whatsapp-modal">
+        <div class="whatsapp-modal-content">
+            <span class="whatsapp-modal-close">&times;</span>
+            <h3>Antes de continuar...</h3>
+            <p>Por favor, ingrese su nombre y número de teléfono.</p>
+            <form id="whatsapp-form">
+                <input type="text" id="whatsapp-name" placeholder="Nombre" required>
+                <input type="tel" id="whatsapp-phone" placeholder="Teléfono" required>
+                <button type="submit" class="btn-custom">Enviar</button>
+            </form>
+        </div>
+    </div>
+
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -740,6 +754,37 @@
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
+            }
+        });
+
+        // WhatsApp Modal
+        const whatsappModal = document.getElementById('whatsapp-modal');
+        const whatsappBtn = document.querySelector('.whatsapp-float');
+        const whatsappCloseBtn = document.querySelector('.whatsapp-modal-close');
+        const whatsappForm = document.getElementById('whatsapp-form');
+
+        whatsappBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            whatsappModal.style.display = 'block';
+        });
+
+        whatsappCloseBtn.addEventListener('click', function() {
+            whatsappModal.style.display = 'none';
+        });
+
+        whatsappForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('whatsapp-name').value;
+            const phone = document.getElementById('whatsapp-phone').value;
+            const message = `Hola, mi nombre es ${name} y mi número de teléfono es ${phone}. Me gustaría obtener más información.`;
+            const whatsappUrl = `https://wa.me/525539508214?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            whatsappModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(e) {
+            if (e.target == whatsappModal) {
+                whatsappModal.style.display = 'none';
             }
         });
     </script>

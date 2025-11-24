@@ -31,11 +31,13 @@ body {
 .value-icon img {
     width: 40px;
     height: 40px;
+    mix-blend-mode: darken;
 }
 
 .brand-logo img {
     width: 50px;
     height: 50px;
+    mix-blend-mode: darken;
 }
 
 .commitment-icon img {
@@ -251,6 +253,7 @@ footer img {
     width: 40px;
     height: 40px;
     transition: all 0.4s ease;
+    mix-blend-mode: darken;
 }
 
 .service-card-modern:hover .service-icon-modern img {
@@ -940,4 +943,57 @@ footer a:hover {
     .whatsapp-float i {
         font-size: 28px;
     }
+}
+
+/* WhatsApp Modal */
+.whatsapp-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.whatsapp-modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.whatsapp-modal-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.whatsapp-modal-close:hover,
+.whatsapp-modal-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#whatsapp-form input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#whatsapp-form button {
+    width: 100%;
+    margin-top: 10px;
 }
