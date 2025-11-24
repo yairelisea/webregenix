@@ -261,7 +261,7 @@ footer svg {
 }
 
 .service-card-modern:hover .service-icon-modern img {
-    filter: brightness(0) invert(1);
+    
 }
 
 .service-card-modern h3 {
@@ -382,7 +382,7 @@ footer svg {
 }
 
 .value-card:hover .value-icon img {
-    filter: brightness(0) invert(1);
+    
 }
 
 .value-card h3 {
@@ -592,7 +592,7 @@ footer svg {
 }
 
 .brand-card:hover .brand-logo img {
-    filter: brightness(0) invert(1);
+    
 }
 
 .brand-card h4 {
