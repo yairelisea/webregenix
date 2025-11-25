@@ -27,68 +27,91 @@ body {
 
 /* SVG Icons - TAMAÑOS CONTROLADOS */
 
+/* Regla general para todos los SVG - evitar que se vean gigantes */
+svg {
+    max-width: 100%;
+    height: auto;
+    fill: currentColor;
+}
+
 /* Iconos específicos con tamaños fijos */
 .value-icon svg {
     width: 40px;
     height: 40px;
+    fill: var(--primary-color);
 }
 
 .brand-logo svg {
     width: 50px;
     height: 50px;
+    fill: var(--accent-color);
 }
 
 .commitment-icon svg {
-    width: 1rem;
-    height: 1rem;
+    width: 3rem;
+    height: 3rem;
+    fill: white;
 }
 
 .location-icon svg {
     width: 30px;
     height: 30px;
+    fill: white;
 }
 
 .contact-item svg {
-    width: 1rem;
-    height: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
     flex-shrink: 0;
+    fill: var(--accent-color);
 }
 
 .detail-item svg {
     width: 18px;
     height: 18px;
     flex-shrink: 0;
-    color: white;
+    fill: var(--accent-color);
 }
 
 .quote-icon svg {
     width: 2rem;
     height: 2rem;
+    fill: var(--accent-color);
+    opacity: 0.2;
 }
 
-.service-arrow img {
-    width: 1rem;
-    height: 1rem;
+.service-arrow i {
+    font-size: 1.2rem;
+    color: var(--accent-color);
 }
 
 .btn-commitment svg {
-    width: 1rem;
-    height: 1rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    fill: var(--primary-color);
 }
 
 .btn-location svg {
     width: 1.2rem;
     height: 1.2rem;
+    fill: white;
 }
 
 .map-placeholder svg {
     width: 4rem;
     height: 4rem;
+    fill: var(--accent-color);
 }
 
 footer svg {
-    width: 1rem;
-    height: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: var(--text-light);
+    transition: fill 0.3s ease;
+}
+
+footer a:hover svg {
+    fill: var(--accent-color);
 }
 
 /* Navbar */
@@ -937,9 +960,17 @@ footer a:hover {
         width: 55px;
         height: 55px;
     }
-    
+
     .whatsapp-float i {
         font-size: 28px;
+    }
+
+    .whatsapp-modal-content {
+        bottom: 85px;
+        right: 20px;
+        left: 20px;
+        width: auto;
+        max-width: calc(100% - 40px);
     }
 }
 
@@ -956,28 +987,35 @@ footer a:hover {
     background-color: rgba(0,0,0,0.4);
     opacity: 0;
     transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
 .whatsapp-modal.visible {
     display: block;
     opacity: 1;
+    pointer-events: auto;
 }
 
 .whatsapp-modal.visible .whatsapp-modal-content {
-    transform: scale(1);
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .whatsapp-modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-    border-radius: 10px;
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    padding: 25px;
+    border: none;
+    width: 90%;
+    max-width: 380px;
+    border-radius: 16px;
     text-align: center;
-    transform: scale(0.5);
-    transition: transform 0.3s ease;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
 .whatsapp-modal-close {
