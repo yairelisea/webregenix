@@ -34,50 +34,87 @@ svg {
     fill: currentColor;
 }
 
+/* Aplicar fill a los paths dentro de los SVG symbols */
+svg path {
+    fill: inherit;
+}
+
+svg use {
+    fill: inherit;
+}
+
 /* Iconos específicos con tamaños fijos */
 .value-icon svg {
-    width: 40px;
-    height: 40px;
-    fill: var(--primary-color);
+    width: 40px !important;
+    height: 40px !important;
+    fill: var(--primary-color) !important;
+}
+
+.value-icon svg path {
+    fill: var(--primary-color) !important;
 }
 
 .brand-logo svg {
-    width: 50px;
-    height: 50px;
-    fill: var(--accent-color);
+    width: 50px !important;
+    height: 50px !important;
+    fill: var(--accent-color) !important;
+}
+
+.brand-logo svg path {
+    fill: var(--accent-color) !important;
 }
 
 .commitment-icon svg {
-    width: 3rem;
-    height: 3rem;
-    fill: white;
+    width: 3rem !important;
+    height: 3rem !important;
+    fill: white !important;
+}
+
+.commitment-icon svg path {
+    fill: white !important;
 }
 
 .location-icon svg {
-    width: 30px;
-    height: 30px;
-    fill: white;
+    width: 30px !important;
+    height: 30px !important;
+    fill: white !important;
+}
+
+.location-icon svg path {
+    fill: white !important;
 }
 
 .contact-item svg {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.5rem !important;
+    height: 1.5rem !important;
     flex-shrink: 0;
-    fill: var(--accent-color);
+    fill: var(--accent-color) !important;
+}
+
+.contact-item svg path {
+    fill: var(--accent-color) !important;
 }
 
 .detail-item svg {
-    width: 18px;
-    height: 18px;
+    width: 18px !important;
+    height: 18px !important;
     flex-shrink: 0;
-    fill: var(--accent-color);
+    fill: var(--accent-color) !important;
+}
+
+.detail-item svg path {
+    fill: var(--accent-color) !important;
 }
 
 .quote-icon svg {
-    width: 2rem;
-    height: 2rem;
-    fill: var(--accent-color);
+    width: 2rem !important;
+    height: 2rem !important;
+    fill: var(--accent-color) !important;
     opacity: 0.2;
+}
+
+.quote-icon svg path {
+    fill: var(--accent-color) !important;
 }
 
 .service-arrow i {
@@ -86,32 +123,53 @@ svg {
 }
 
 .btn-commitment svg {
-    width: 1.2rem;
-    height: 1.2rem;
-    fill: var(--primary-color);
+    width: 1.2rem !important;
+    height: 1.2rem !important;
+    fill: var(--primary-color) !important;
+}
+
+.btn-commitment svg path {
+    fill: var(--primary-color) !important;
 }
 
 .btn-location svg {
-    width: 1.2rem;
-    height: 1.2rem;
-    fill: white;
+    width: 1.2rem !important;
+    height: 1.2rem !important;
+    fill: white !important;
+}
+
+.btn-location svg path {
+    fill: white !important;
 }
 
 .map-placeholder svg {
-    width: 4rem;
-    height: 4rem;
-    fill: var(--accent-color);
+    width: 4rem !important;
+    height: 4rem !important;
+    fill: var(--accent-color) !important;
+}
+
+.map-placeholder svg path {
+    fill: var(--accent-color) !important;
 }
 
 footer svg {
-    width: 1.5rem;
-    height: 1.5rem;
-    fill: var(--text-light);
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    fill: var(--text-light) !important;
+    transition: fill 0.3s ease;
+}
+
+footer svg path {
+    fill: var(--text-light) !important;
     transition: fill 0.3s ease;
 }
 
 footer a:hover svg {
-    fill: var(--accent-color);
+    fill: var(--accent-color) !important;
+}
+
+footer a:hover svg path {
+    fill: var(--accent-color) !important;
 }
 
 /* Navbar */
@@ -966,11 +1024,11 @@ footer a:hover {
     }
 
     .whatsapp-modal-content {
-        bottom: 85px;
-        right: 20px;
-        left: 20px;
-        width: auto;
-        max-width: calc(100% - 40px);
+        bottom: 85px !important;
+        right: 20px !important;
+        left: 20px !important;
+        width: auto !important;
+        max-width: calc(100% - 40px) !important;
     }
 }
 
@@ -1003,12 +1061,15 @@ footer a:hover {
 
 .whatsapp-modal-content {
     background-color: #fefefe;
-    position: fixed;
-    bottom: 100px;
-    right: 30px;
+    position: fixed !important;
+    bottom: 100px !important;
+    right: 30px !important;
+    left: auto !important;
+    top: auto !important;
+    margin: 0 !important;
     padding: 25px;
     border: none;
-    width: 90%;
+    width: 380px !important;
     max-width: 380px;
     border-radius: 16px;
     text-align: center;
