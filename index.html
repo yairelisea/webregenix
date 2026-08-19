@@ -662,7 +662,7 @@
                     <div class="locations-grid">
                         <!-- Monterrey -->
                         <div class="location-card location-card-featured">
-                            <img src="https://placehold.co/600x400.png" alt="Clínica Tampico" class="location-image">
+                            <img src="img/Suc/Tampico1.jpg" alt="Clínica Tampico" class="location-image">
                             <div class="location-badge">Principal</div>
                             <div class="location-icon">
                                 <svg>
@@ -701,8 +701,16 @@
 
                         <!-- Ciudad de México -->
                         <div class="location-card">
-                            <img src="https://placehold.co/600x400.png" alt="Clínica Ciudad de México"
-                                class="location-image">
+                            <div class="location-carousel" id="carousel-cdmx">
+                                <div class="carousel-track">
+                                    <img src="img/Suc/Polanco1.jpg" alt="Clínica CDMX - Vista 1" class="location-image carousel-slide active">
+                                    <img src="img/Suc/Polanco2.jpg" alt="Clínica CDMX - Vista 2" class="location-image carousel-slide">
+                                </div>
+                                <div class="carousel-dots">
+                                    <span class="carousel-dot active" onclick="goToSlide('cdmx', 0)"></span>
+                                    <span class="carousel-dot" onclick="goToSlide('cdmx', 1)"></span>
+                                </div>
+                            </div>
                             <div class="location-icon">
                                 <svg>
                                     <use href="#icon-map-marker" />
@@ -740,7 +748,18 @@
 
                         <!-- Queretaro -->
                         <div class="location-card">
-                            <img src="https://placehold.co/600x400.png" alt="Clínica Querétaro" class="location-image">
+                            <div class="location-carousel" id="carousel-qro">
+                                <div class="carousel-track">
+                                    <img src="img/Suc/Qro1.jpg" alt="Clínica Querétaro - Vista 1" class="location-image carousel-slide active">
+                                    <img src="img/Suc/Qro2.jpg" alt="Clínica Querétaro - Vista 2" class="location-image carousel-slide">
+                                    <img src="img/Suc/Qro3.jpg" alt="Clínica Querétaro - Vista 3" class="location-image carousel-slide">
+                                </div>
+                                <div class="carousel-dots">
+                                    <span class="carousel-dot active" onclick="goToSlide('qro', 0)"></span>
+                                    <span class="carousel-dot" onclick="goToSlide('qro', 1)"></span>
+                                    <span class="carousel-dot" onclick="goToSlide('qro', 2)"></span>
+                                </div>
+                            </div>
                             <div class="location-icon">
                                 <svg>
                                     <use href="#icon-map-marker" />
@@ -778,7 +797,7 @@
 
                         <!-- Huejutla -->
                         <div class="location-card">
-                            <img src="https://placehold.co/600x400.png" alt="Clínica Huejutla" class="location-image">
+                            <img src="img/Suc/Huejutla.png" alt="Clínica Huejutla" class="location-image">
                             <div class="location-icon">
                                 <svg>
                                     <use href="#icon-map-marker" />
@@ -816,7 +835,7 @@
 
                         <!-- Reynosa -->
                         <div class="location-card">
-                            <img src="https://placehold.co/600x400.png" alt="Clínica Reynosa" class="location-image">
+                            <img src="img/Suc/Reynosa.png" alt="Clínica Reynosa" class="location-image">
                             <div class="location-icon">
                                 <svg>
                                     <use href="#icon-map-marker" />
@@ -1075,6 +1094,38 @@
                     }
                 });
             </script>
+
+    <!-- Carrusel de sucursales -->
+    <script>
+        const carousels = {
+            'cdmx': { current: 0, total: 2 },
+            'qro':  { current: 0, total: 3 }
+        };
+
+        function goToSlide(id, index) {
+            const c = carousels[id];
+            if (!c) return;
+            const container = document.getElementById('carousel-' + id);
+            const slides = container.querySelectorAll('.carousel-slide');
+            const dots   = container.querySelectorAll('.carousel-dot');
+
+            slides[c.current].classList.remove('active');
+            dots[c.current].classList.remove('active');
+            c.current = index;
+            slides[c.current].classList.add('active');
+            dots[c.current].classList.add('active');
+        }
+
+        function nextSlide(id) {
+            const c = carousels[id];
+            if (!c) return;
+            goToSlide(id, (c.current + 1) % c.total);
+        }
+
+        Object.keys(carousels).forEach(id => {
+            setInterval(() => nextSlide(id), 3500);
+        });
+    </script>
 </body>
 
 </html>
