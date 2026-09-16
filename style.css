@@ -160,7 +160,112 @@ footer a:hover svg {
     background-color: #ffffff;
     color: var(--text-dark);
     padding: 180px 0 120px;
+    position: relative;
+    overflow: hidden;
 }
+
+/* Contenido del hero — encima de las células */
+.rgx-hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Células flotantes ── */
+.rgx-cells {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Keyframes: solo transform — corre en la GPU */
+@keyframes rgxFloat {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(30px, -25px) scale(1.08); }
+    100% { transform: translate(-20px, 20px) scale(.95); }
+}
+
+/* Base para cada célula */
+.rgx-cells span {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    animation: rgxFloat ease-in-out infinite alternate;
+}
+
+/* 1 — grande, arriba-izquierda, verde */
+.rgx-cells span:nth-child(1) {
+    width: 340px;
+    height: 340px;
+    top: -60px;
+    left: -80px;
+    background-color: #83e0a2;
+    opacity: .18;
+    animation-duration: 22s;
+}
+
+/* 2 — mediana, abajo-derecha, azul marino */
+.rgx-cells span:nth-child(2) {
+    width: 260px;
+    height: 260px;
+    bottom: -40px;
+    right: 10%;
+    background-color: #172446;
+    opacity: .08;
+    animation-duration: 26s;
+    animation-delay: -8s;
+}
+
+/* 3 — pequeña, derecha-centro, verde */
+.rgx-cells span:nth-child(3) {
+    width: 180px;
+    height: 180px;
+    top: 30%;
+    right: -40px;
+    background-color: #83e0a2;
+    opacity: .18;
+    animation-duration: 18s;
+    animation-delay: -4s;
+}
+
+/* 4 — más pequeña, abajo-izquierda, verde claro */
+.rgx-cells span:nth-child(4) {
+    width: 120px;
+    height: 120px;
+    bottom: 15%;
+    left: 12%;
+    background-color: #a8f0c6;
+    opacity: .18;
+    animation-duration: 20s;
+    animation-delay: -12s;
+}
+
+/* 5 — la menor, arriba-centro, verde */
+.rgx-cells span:nth-child(5) {
+    width: 90px;
+    height: 90px;
+    top: 18%;
+    left: 45%;
+    background-color: #83e0a2;
+    opacity: .12;
+    animation-duration: 24s;
+    animation-delay: -6s;
+}
+
+/* Móvil: tamaños -40 %, ocultar círculo 5 */
+@media (max-width: 768px) {
+    .rgx-cells span:nth-child(1) { width: 204px; height: 204px; }
+    .rgx-cells span:nth-child(2) { width: 156px; height: 156px; }
+    .rgx-cells span:nth-child(3) { width: 108px; height: 108px; }
+    .rgx-cells span:nth-child(4) { width:  72px; height:  72px; }
+    .rgx-cells span:nth-child(5) { display: none; }
+}
+
+/* Accesibilidad: sin animación para quienes la prefieren reducida */
+@media (prefers-reduced-motion: reduce) {
+    .rgx-cells span { animation: none; }
+}
+
 
 .hero h1 {
     font-size: 4.5rem;
